@@ -1,7 +1,7 @@
 import sqlite3
 import os 
 
-db = os.path.join('database', 'books.db')
+db = ':memory:'
 
 class Book:
 
