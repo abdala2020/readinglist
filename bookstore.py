@@ -18,6 +18,11 @@ class Book:
         self.bookstore = BookStore()
 
 
+    """ The save function takes a book class as an argument and initially checks if it has an ID value.
+    If the book has an ID, it's in the database and the data should be sent to the _update_book() function.
+    If there was no ID, it's a new book. First a search is run to return books that match the title,
+    the book_search() function returns a list of books, which can be iterated through and checked against.
+    If the same title is in there, the User is notified and the book isn't added. Otherwise, it's sent to _add_book()"""
     def save(self):
         if self.id:
             self.bookstore._update_book(self)
