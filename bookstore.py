@@ -22,7 +22,15 @@ class Book:
         if self.id:
             self.bookstore._update_book(self)
         else:
-            self.bookstore._add_book(self)
+            contains = False
+            returned = self.bookstore.book_search(self.title)
+            for book in returned:
+                if self.title == book.title:
+                    contains = True
+            if contains:
+                print("A book with this title is already in the database.")
+            else:
+                self.bookstore._add_book(self)
 
 
     def delete(self):
