@@ -64,6 +64,7 @@ def change_read():
     new_read = ui.get_read_value()     
     book.read = new_read 
     book.save()
+    ui.message('Book status updated!')
     
 
 def quit_program():
