@@ -33,7 +33,9 @@ def create_menu():
 
 def add_book():
     new_book = ui.get_book_info()
-    new_book.save()
+    addition_attempt = new_book.save()
+    if addition_attempt:
+        ui.message(addition_attempt)
     
 
 def show_read_books():
