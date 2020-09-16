@@ -22,7 +22,10 @@ class Book:
         if self.id:
             self.bookstore._update_book(self)
         else:
-            self.bookstore._add_book(self)
+            try:
+                self.bookstore._add_book(self)
+            except BookError as err:
+                return err
 
 
     def delete(self):
