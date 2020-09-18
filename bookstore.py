@@ -1,7 +1,9 @@
 import sqlite3
 import os 
 
+
 db = os.path.join('database', 'books.db')
+
 
 class Book:
 
@@ -17,7 +19,10 @@ class Book:
 
         self.bookstore = BookStore()
 
-
+    """ The save function takes the book object as an argument, then if it has an ID, sends it to the update function 
+    because the ID means it's already got a spot in the database.
+    If there is no ID, then it's a new book and it'll attempt to add it through the add_book function,
+    if that attempt sends back a BookError exception, it'll take it and return it to be printed out to the User. """
     def save(self):
         if self.id:
             self.bookstore._update_book(self)
