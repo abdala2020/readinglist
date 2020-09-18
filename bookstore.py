@@ -26,7 +26,10 @@ class Book:
 
 
     def delete(self):
-        self.bookstore._delete_book(self)
+        try:
+            self.bookstore._delete_book(self)
+        except BookError as err:
+            return err
 
 
     def __str__(self):
@@ -192,7 +195,8 @@ class BookStore:
             
             if book_data:
                 book = Book(book_data['title'], book_data['author'], book_data['read'], book_data['rowid'])
-                    
+            else:
+                book = None   
             con.close()            
             
             return book 
