@@ -69,9 +69,9 @@ def change_read():
 def delete_book():
     book_id = ui.get_book_id()
     book = store.get_book_by_id(book_id)
-    if book:
+    try:
         book.delete()
-    else:
+    except:
         ui.message(f'N Book with ID {book_id} exists')
 
     

@@ -26,10 +26,9 @@ class Book:
 
 
     def delete(self):
-        try:
-            self.bookstore._delete_book(self)
-        except BookError as err:
-            return err
+        self.bookstore._delete_book(self)
+       
+           
 
 
     def __str__(self):
