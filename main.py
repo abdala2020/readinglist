@@ -60,13 +60,17 @@ def search_book():
 
 
 def change_read():
-
     book_id = ui.get_book_id()
-    book = store.get_book_by_id(book_id)  
-    new_read = ui.get_read_value()     
-    book.read = new_read 
-    book.save()
-    ui.message(f'{book.title} by {book.author} has been updated!')
+    book = store.get_book_by_id(book_id)
+    if book:
+        new_read = ui.get_read_value()     
+        book.read = new_read 
+        book.save()
+        ui.message(f'{book.title} by {book.author} has been updated!')
+    else:
+        ui.message(f'No book with ID {book_id} exists.')
+    
+
     
 
 def quit_program():
