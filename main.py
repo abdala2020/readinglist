@@ -67,6 +67,8 @@ def change_read():
         book.read = new_read 
         book.save()
         ui.message(f'{book.title} by {book.author} has been updated!')
+    else:
+        ui.message(f'No book with ID {book_id} exists.')
     
 
     
