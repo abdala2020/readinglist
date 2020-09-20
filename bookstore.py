@@ -35,6 +35,8 @@ class Book:
 
     def delete(self):
         self.bookstore._delete_book(self)
+       
+           
 
 
     def __str__(self):
@@ -201,12 +203,12 @@ class BookStore:
             if book_data:
                 book = Book(book_data['title'], book_data['author'], book_data['read'], book_data['rowid'])
             else:
+
                 book = False
                     
             con.close()   
 
             return book
-
 
         def book_search(self, term):
             """ Searches the store for books whose author or title contain a search term. Case insensitive.
