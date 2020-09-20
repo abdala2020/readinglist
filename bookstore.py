@@ -1,7 +1,9 @@
 import sqlite3
 import os 
 
-db = db = os.path.join('database', 'books.db')
+
+db = os.path.join('database', 'books.db')
+
 
 class Book:
 
@@ -17,12 +19,18 @@ class Book:
 
         self.bookstore = BookStore()
 
-
+    """ The save function takes the book object as an argument, then if it has an ID, sends it to the update function 
+    because the ID means it's already got a spot in the database.
+    If there is no ID, then it's a new book and it'll attempt to add it through the add_book function,
+    if that attempt sends back a BookError exception, it'll take it and return it to be printed out to the User. """
     def save(self):
         if self.id:
             self.bookstore._update_book(self)
         else:
-            self.bookstore._add_book(self)
+            try:
+                self.bookstore._add_book(self)
+            except BookError as err:
+                return err
 
 
     def delete(self):
@@ -195,11 +203,12 @@ class BookStore:
             if book_data:
                 book = Book(book_data['title'], book_data['author'], book_data['read'], book_data['rowid'])
             else:
-                book = None   
-            con.close()            
-            
-            return book 
 
+                book = False
+                    
+            con.close()   
+
+            return book
 
         def book_search(self, term):
             """ Searches the store for books whose author or title contain a search term. Case insensitive.
