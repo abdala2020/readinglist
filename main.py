@@ -79,7 +79,7 @@ def delete_book():
     try:
         book.delete()
     except:
-        ui.message(f'N Book with ID {book_id} exists')
+        ui.message(f'No book with ID {book_id} exists.')
 
     
 
