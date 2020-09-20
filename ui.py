@@ -48,10 +48,10 @@ def get_book_id():
     while True:
         try:
             id = int(input('Enter book ID: '))
-            if id > 0:
+            if id > 0 and id < 100000:
                 return id
             else:
-                print('Please enter a positive number.')
+                print('Please enter a positive number less than 100,000.')
 
         except ValueError:
             print('Please enter a number.')
